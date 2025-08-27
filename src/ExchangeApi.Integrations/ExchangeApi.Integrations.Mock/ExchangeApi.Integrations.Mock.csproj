@@ -1,15 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <!-- 必要なら: <LangVersion>latest</LangVersion> -->
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\ExchangeApi.AbstractExchange\ExchangeApi.AbstractExchange.csproj" />
       <ProjectReference Include="..\..\ExchangeApi.Rest.Adapter\ExchangeApi.Rest.Adapter.csproj" />
       <ProjectReference Include="..\..\ExchangeApi.Rest.Core\ExchangeApi.Rest.Core.csproj" />
     </ItemGroup>
-
-
 </Project>

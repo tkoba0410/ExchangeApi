@@ -1,13 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\ExchangeApi.Rest.Core\ExchangeApi.Rest.Core.csproj" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ExchangeApi.AbstractExchange\ExchangeApi.AbstractExchange.csproj" />
+      <ProjectReference Include="..\ExchangeApi.Rest.Core\ExchangeApi.Rest.Core.csproj" />
+    </ItemGroup>
 </Project>

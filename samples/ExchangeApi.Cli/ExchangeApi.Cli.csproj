@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\ExchangeApi.Applications\ExchangeApi.Applications.csproj" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\ExchangeApi.Applications\ExchangeApi.Applications.csproj" />
+        <ProjectReference Include="..\..\src\ExchangeApi.Foundation\ExchangeApi.Foundation.csproj" />
+        <ProjectReference Include="..\..\src\ExchangeApi.Integrations\ExchangeApi.Integrations.Mock\ExchangeApi.Integrations.Mock.csproj" />
+    </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 </Project>
