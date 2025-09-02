@@ -72,6 +72,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeApi.Integrations.By
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeApi.Integrations.Mock.Tests", "tests\ExchangeApi.Integrations.Tests\ExchangeApi.Integrations.Mock.Tests\ExchangeApi.Integrations.Mock.Tests\ExchangeApi.Integrations.Mock.Tests.csproj", "{9EA33896-D3E9-DF28-D2B9-1EAB828C1869}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devlog", "devlog", "{CB84C57F-BC9F-4680-9727-A2C615DC5AD4}"
+	ProjectSection(SolutionItems) = preProject
+		devlog\2025-08-16_DevLog_E2200_SolutionScaffold.md = devlog\2025-08-16_DevLog_E2200_SolutionScaffold.md
+		devlog\2025-08-27_DevLog_E2200_ContractsV2_MockMVP.md = devlog\2025-08-27_DevLog_E2200_ContractsV2_MockMVP.md
+		devlog\2025-09-02_DevLog_ExchangeApi_CI_and_Bitflyer.md = devlog\2025-09-02_DevLog_ExchangeApi_CI_and_Bitflyer.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
