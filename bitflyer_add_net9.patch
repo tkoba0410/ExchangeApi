@@ -1,0 +1,94 @@
+From 1234567890 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Tue, 2 Sep 2025 19:00:00 +0900
+Subject: [PATCH] feat(bitflyer): add minimal Bitflyer integration project (net9.0)
+
+---
+ src/ExchangeApi.Integrations.Bitflyer/ExchangeApi.Integrations.Bitflyer.csproj |  8 ++++++++
+ src/ExchangeApi.Integrations.Bitflyer/Internal/BitflyerOptions.cs             |  6 ++++++
+ src/ExchangeApi.Integrations.Bitflyer/Models/BitflyerModels.cs                | 10 ++++++++++
+ src/ExchangeApi.Integrations.Bitflyer/Public/BitflyerPublicApi.cs             | 28 ++++++++++++++++++++++++++++
+ 4 files changed, 52 insertions(+)
+ create mode 100644 src/ExchangeApi.Integrations.Bitflyer/ExchangeApi.Integrations.Bitflyer.csproj
+ create mode 100644 src/ExchangeApi.Integrations.Bitflyer/Internal/BitflyerOptions.cs
+ create mode 100644 src/ExchangeApi.Integrations.Bitflyer/Models/BitflyerModels.cs
+ create mode 100644 src/ExchangeApi.Integrations.Bitflyer/Public/BitflyerPublicApi.cs
+
+diff --git a/src/ExchangeApi.Integrations.Bitflyer/ExchangeApi.Integrations.Bitflyer.csproj b/src/ExchangeApi.Integrations.Bitflyer/ExchangeApi.Integrations.Bitflyer.csproj
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/src/ExchangeApi.Integrations.Bitflyer/ExchangeApi.Integrations.Bitflyer.csproj
+@@ -0,0 +1,8 @@
++<Project Sdk="Microsoft.NET.Sdk">
++  <PropertyGroup>
++    <TargetFramework>net9.0</TargetFramework>
++    <Nullable>enable</Nullable>
++    <ImplicitUsings>enable</ImplicitUsings>
++    <RootNamespace>ExchangeApi.Integrations.Bitflyer</RootNamespace>
++  </PropertyGroup>
++</Project>
+diff --git a/src/ExchangeApi.Integrations.Bitflyer/Internal/BitflyerOptions.cs b/src/ExchangeApi.Integrations.Bitflyer/Internal/BitflyerOptions.cs
+new file mode 100644
+index 0000000..2222222
+--- /dev/null
++++ b/src/ExchangeApi.Integrations.Bitflyer/Internal/BitflyerOptions.cs
+@@ -0,0 +1,6 @@
++namespace ExchangeApi.Integrations.Bitflyer.Internal;
++
++public sealed class BitflyerOptions
++{
++    public string BaseUrl { get; init; } = "https://api.bitflyer.com";
++}
+diff --git a/src/ExchangeApi.Integrations.Bitflyer/Models/BitflyerModels.cs b/src/ExchangeApi.Integrations.Bitflyer/Models/BitflyerModels.cs
+new file mode 100644
+index 0000000..3333333
+--- /dev/null
++++ b/src/ExchangeApi.Integrations.Bitflyer/Models/BitflyerModels.cs
+@@ -0,0 +1,10 @@
++namespace ExchangeApi.Integrations.Bitflyer.Models;
++
++/// <summary>
++/// 最小のティッカーモデル（必要に応じて拡張）
++/// </summary>
++public sealed record Ticker(
++    decimal Ltp,
++    decimal BestBid,
++    decimal BestAsk
++);
+diff --git a/src/ExchangeApi.Integrations.Bitflyer/Public/BitflyerPublicApi.cs b/src/ExchangeApi.Integrations.Bitflyer/Public/BitflyerPublicApi.cs
+new file mode 100644
+index 0000000..4444444
+--- /dev/null
++++ b/src/ExchangeApi.Integrations.Bitflyer/Public/BitflyerPublicApi.cs
+@@ -0,0 +1,28 @@
++using System;
++using System.Net.Http;
++using System.Threading;
++using System.Threading.Tasks;
++using ExchangeApi.Integrations.Bitflyer.Internal;
++
++namespace ExchangeApi.Integrations.Bitflyer.Public;
++
++public sealed class BitflyerPublicApi
++{
++    private readonly HttpClient _http;
++
++    public BitflyerPublicApi(HttpClient http, BitflyerOptions? options = null)
++    {
++        _http = http ?? throw new ArgumentNullException(nameof(http));
++        var baseUrl = (options ?? new BitflyerOptions()).BaseUrl;
++        if (_http.BaseAddress is null) _http.BaseAddress = new Uri(baseUrl);
++    }
++
++    public async Task<string> GetTickerRawAsync(
++        string productCode = "BTC_JPY",
++        CancellationToken ct = default)
++    {
++        using var res = await _http.GetAsync($"/v1/getticker?product_code={Uri.EscapeDataString(productCode)}", ct);
++        res.EnsureSuccessStatusCode();
++        return await res.Content.ReadAsStringAsync(ct);
++    }
++}
+-- 
+2.39.3
