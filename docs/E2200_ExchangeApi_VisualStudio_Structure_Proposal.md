@@ -1,3 +1,7 @@
+> **STATUS: Superseded (2025-09-06)**
+> 本ドキュメントは D2200_Module_Composition_Detailed.md v2.0 に置き換えられました。
+> 設計・参照は D2200 v2.0 を正典として下さい。
+
 # E2200\_ExchangeApi Visual Studio 構成提案書.md
 
 - **分類**: 追加文書
