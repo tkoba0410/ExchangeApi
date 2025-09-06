@@ -18,3 +18,4 @@
 ## R0xxx 運用 / 管理
 - [R0000_Document_Management_Policy.md](./R0000_Document_Management_Policy.md)
 
+（テスト用の追記行です — 2025-09-06）
